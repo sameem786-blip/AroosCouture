@@ -22,7 +22,6 @@ export function buildWhatsAppLink(message: string) {
 export const navLinks = [
   { label: "Home", href: "#home" },
   { label: "Collections", href: "#collections" },
-  { label: "Our Story", href: "#about" },
   { label: "Craftsmanship", href: "#craftsmanship" },
   { label: "Testimonials", href: "#testimonials" },
   { label: "Contact", href: "#contact" },

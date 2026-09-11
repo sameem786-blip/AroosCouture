@@ -23,6 +23,20 @@ export function Navbar() {
     };
   }, [open]);
 
+  // Unmounting the menu's fixed-position overlay mid-scroll interrupts an
+  // in-progress smooth scrollIntoView (the browser silently drops it), so we
+  // close the menu, let its exit animation finish, then scroll ourselves
+  // instead of relying on default <a href="#..."> navigation.
+  const handleNavLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    setOpen(false);
+    const id = href.slice(1);
+    window.setTimeout(() => {
+      document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+      history.pushState(null, "", href);
+    }, 320);
+  };
+
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
@@ -106,7 +120,7 @@ export function Navbar() {
                 <li key={link.href}>
                   <a
                     href={link.href}
-                    onClick={() => setOpen(false)}
+                    onClick={(e) => handleNavLinkClick(e, link.href)}
                     className="block rounded-lg px-3 py-3 font-sans text-base font-medium text-ink/85 transition-colors hover:bg-gold/10 hover:text-gold-dark"
                   >
                     {link.label}
