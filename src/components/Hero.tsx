@@ -16,6 +16,7 @@ type HeroSlide = {
   rotate: number;
   scale: number;
   palette: { from: string; to: string; ring: string };
+  image: string;
 };
 
 const heroSlides: HeroSlide[] = [
@@ -30,6 +31,7 @@ const heroSlides: HeroSlide[] = [
     rotate: 0,
     scale: 1,
     palette: { from: "#5c1024", to: "#c99a3f", ring: "#8a1f3a" },
+    image: "/slideshow_1.png",
   },
   {
     id: "walima",
@@ -43,6 +45,7 @@ const heroSlides: HeroSlide[] = [
     rotate: -1.5,
     scale: 1.03,
     palette: { from: "#e8d3a0", to: "#b8873b", ring: "#6b4a21" },
+    image: "/slideshow_2.png",
   },
   {
     id: "mehndi",
@@ -56,6 +59,7 @@ const heroSlides: HeroSlide[] = [
     rotate: 1.5,
     scale: 1,
     palette: { from: "#3f5d2f", to: "#e6b84a", ring: "#7e8f3a" },
+    image: "/slideshow_3.png",
   },
   {
     id: "nikkah",
@@ -69,6 +73,7 @@ const heroSlides: HeroSlide[] = [
     rotate: -1,
     scale: 1.02,
     palette: { from: "#e9d9ad", to: "#a67c27", ring: "#5a3f18" },
+    image: "/slideshow_4.png",
   },
   {
     id: "sangeet",
@@ -82,6 +87,7 @@ const heroSlides: HeroSlide[] = [
     rotate: 1,
     scale: 1,
     palette: { from: "#83204f", to: "#d9a441", ring: "#4a1030" },
+    image: "/slideshow_5.png",
   },
 ];
 
@@ -263,7 +269,7 @@ export function Hero() {
                   style={{ transform: `rotate(${slide.rotate}deg) scale(${slide.scale})` }}
                 >
                   <Image
-                    src="/favicon.png"
+                    src={slide.image}
                     alt="Aroos Couture bride in hand-embroidered ivory and gold bridal wear"
                     fill
                     priority
